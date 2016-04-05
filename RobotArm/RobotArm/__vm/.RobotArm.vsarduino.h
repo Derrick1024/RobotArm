@@ -65,5 +65,6 @@ extern "C" void __cxa_pure_virtual() {;}
 #include <..\RobotArm\RobotArm.ino>
 #include <..\RobotArm\UsartTask.cpp>
 #include <..\RobotArm\UsartTask.h>
+#include <..\RobotArm\ValueFunDefine.cpp>
 #include <..\RobotArm\ValueFunDefine.h>
 #endif

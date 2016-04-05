@@ -10,6 +10,7 @@ String comdata1 = "";//串口接收数据
 
 int Usart0_TmtTask(void)
 {
+	Serial.println("OK");
 	return 0;
 }
 
@@ -20,7 +21,7 @@ int Usart0_RevTask(void)
 
 	if (Serial.available() > 0)
 	{
-		while (Serial.peek() != 0x0D)
+		while (Serial.peek() != 0x66)
 		{
 			comdata0 += char(Serial.read());
 			delay(2);
@@ -63,16 +64,43 @@ int Usart0_RevTask(void)
 		Serial.println("Angle2");
 		Serial.println(Angle2.Value,3);
 		comdata0 = "";
+		return 1;
 	}
+	return 0;
 }
 
 int Usart1_TmtTask(void)
 {
-	return 0;
+	Serial1.println(String("") + "#" + 12 + "P" + 2000 + "T" + 100);
+	return 1;
 }
 
 
 int Usart1_RevTask(void)
 {
+	if (Serial1.available() > 0)
+	{
+		while (Serial1.peek() != 0x0D)
+		{
+			comdata1 += char(Serial1.read());
+			delay(2);
+
+		}
+		Serial1.read();
+		delay(2);
+		Serial1.read();
+		delay(2);
+
+		if ((comdata1[0] == 0x4F) && (comdata1[1] == 0x4B))
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
+
+	}
+	comdata1 = "";
 	return 0;
 }

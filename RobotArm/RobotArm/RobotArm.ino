@@ -26,9 +26,13 @@ void setup() {
 // the loop function runs over and over again until power down or reset
 void loop() {
 
-	Usart0_TmtTask();
-	Usart0_RevTask();
-	Usart1_TmtTask();
-	Usart1_RevTask();
+	//Usart0_TmtTask();
+	if (Usart0_RevTask() == 1)
+	{
+		Usart1_TmtTask();
+		while (!Usart1_RevTask());
+		Usart0_TmtTask();
+	}
+
 
 }
