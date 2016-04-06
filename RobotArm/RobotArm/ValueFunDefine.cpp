@@ -1,8 +1,13 @@
 #include "ValueFunDefine.h"
 
+int Angle::toDriValue(void)
+{
+	DriValue = (int)(DriValue_a*Value + DriValue_b);
+	return DriValue;
+}
 int Angle::toDriValue(float val)
 {
-	DriValue = DriValue_a*val + DriValue_b;
+	DriValue = (int)(DriValue_a*val+ DriValue_b);
 	return DriValue;
 }
 

@@ -71,7 +71,15 @@ int Usart0_RevTask(void)
 
 int Usart1_TmtTask(void)
 {
-	Serial1.println(String("") + "#" + 12 + "P" + 2000 + "T" + 100);
+	Angle0.toDriValue();
+	Serial.println(Angle0.DriValue);
+	Angle1.toDriValue();
+	Serial.println(Angle1.DriValue);
+	Angle2.toDriValue();
+	Serial.println(Angle2.DriValue);
+	Serial1.println(String("") + "#" + 1 + "P" + Angle0.DriValue + "#" + 2 + "P" + Angle1.DriValue + "#" + 3 + "P" + Angle2.DriValue + "T" + 150);
+	//Serial1.println(String("") + "#" + 2 + "P" + Angle1.DriValue + "T" + 100);
+	//Serial1.println(String("") + "#" + 3 + "P" + Angle2.DriValue + "T" + 100);
 	return 1;
 }
 

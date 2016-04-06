@@ -15,7 +15,9 @@ public:
 	int DriValue = 1500;
 
 
-	int toDriValue(float);
+	int toDriValue();
+
+	int toDriValue(float val);
 
 	float SetDriValue_a(float a);
 	int SetDriValue_b(int b);
